@@ -1,7 +1,8 @@
 import "./App.css";
 import Playlists from "./Playlists";
-import { useEffect, useState } from "react";
-import VideoPlayer from "./VideoPlayer";
+import { useRef, useState } from "react";
+import screenfull from "screenfull";
+import ReactPlayer from "react-player";
 
 const videos = [
   {
@@ -42,6 +43,7 @@ const videos = [
 ];
 
 function App() {
+  const player = useRef(null);
   const [activePlaylist, setActivePlaylist] = useState(videos);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -57,16 +59,41 @@ function App() {
     setIsPlaying(true);
   };
 
+  const handleFullScreen = () => {
+    if (screenfull.isEnabled) {
+      screenfull.request(player.current.wrapper);
+    }
+  };
+
   return (
     <div className="container">
       <div className="video-container">
         {!!activePlaylist.length && (
           <>
-            <VideoPlayer
+            <ReactPlayer
+              ref={player}
               onReady={handleOnReady}
+              controls={true}
               playing={isPlaying}
+              width="100%"
+              height="100%"
+              config={{
+                youtube: {
+                  playerVars: {
+                    modestbranding: 0,
+                    controls: 0,
+                    showinfo: 0,
+                    enablejsapi: 1,
+                    widgetid: 1,
+                    rel: 0,
+                    playsinline: 1,
+                    start: 40,
+                  },
+                },
+              }}
               url={activePlaylist[activeVideoIndex].url}
             />
+
             <div className="controls">
               <div className="player-controls">
                 <>
@@ -74,7 +101,7 @@ function App() {
                     disabled={activeVideoIndex === 0}
                     onClick={() => setActiveVideoIndex(activeVideoIndex - 1)}
                   >
-                    &larr;
+                    &lt;
                   </button>
                   {isPlaying ? (
                     <button onClick={() => setIsPlaying(false)}>
@@ -88,8 +115,9 @@ function App() {
                     disabled={activeVideoIndex === activePlaylist.length - 1}
                     onClick={() => setActiveVideoIndex(activeVideoIndex + 1)}
                   >
-                    &rarr;
+                    &gt;
                   </button>
+                  <button onClick={handleFullScreen}>&#10064;</button>
                 </>
               </div>
             </div>

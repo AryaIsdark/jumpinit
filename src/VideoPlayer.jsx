@@ -1,9 +1,10 @@
 import React from "react";
 import ReactPlayer from "react-player";
 
-const VideoPlayer = ({ playing, url, onReady }) => {
+const VideoPlayer = ({ ref, playing, url, onReady }) => {
   return (
     <ReactPlayer
+      ref={ref}
       onReady={onReady}
       controls={true}
       playing={playing}

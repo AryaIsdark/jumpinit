@@ -72,12 +72,12 @@ body {
 }
 
 .controls .player-controls button {
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   font-size: 30px;
   background: #1d1d1d;
   color: white;
-  margin: 8px;
+  margin: 4px;
 }
 
 .App-logo {

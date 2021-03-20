@@ -105,9 +105,7 @@ function App() {
                       &lt;
                     </button>
                     {isPlaying ? (
-                      <button onClick={() => setIsPlaying(false)}>
-                        &#10074; &#10074;
-                      </button>
+                      <button onClick={() => setIsPlaying(false)}>||</button>
                     ) : (
                       <button onClick={() => setIsPlaying(true)}>
                         &#9658;

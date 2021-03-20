@@ -1,6 +1,6 @@
 import "./App.css";
 import Playlists from "./Playlists";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import VideoPlayer from "./VideoPlayer";
 
 const videos = [
@@ -44,7 +44,7 @@ const videos = [
 function App() {
   const [activePlaylist, setActivePlaylist] = useState(videos);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleOnPlaylistChange = (playlist) => {
     setActiveVideoIndex(0);
@@ -53,12 +53,17 @@ function App() {
     );
   };
 
+  const handleOnReady = () => {
+    setIsPlaying(true);
+  };
+
   return (
     <div className="container">
       <div className="video-container">
         {!!activePlaylist.length && (
           <>
             <VideoPlayer
+              onReady={handleOnReady}
               playing={isPlaying}
               url={activePlaylist[activeVideoIndex].url}
             />

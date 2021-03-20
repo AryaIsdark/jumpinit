@@ -67,7 +67,7 @@ body {
   top: 0;
   background: black;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
 }
 

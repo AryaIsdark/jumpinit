@@ -97,26 +97,30 @@ function App() {
             <div className="controls">
               <div className="player-controls">
                 <>
-                  <button
-                    disabled={activeVideoIndex === 0}
-                    onClick={() => setActiveVideoIndex(activeVideoIndex - 1)}
-                  >
-                    &lt;
-                  </button>
-                  {isPlaying ? (
-                    <button onClick={() => setIsPlaying(false)}>
-                      &#10074; &#10074;
+                  <div>
+                    <button
+                      disabled={activeVideoIndex === 0}
+                      onClick={() => setActiveVideoIndex(activeVideoIndex - 1)}
+                    >
+                      &lt;
                     </button>
-                  ) : (
-                    <button onClick={() => setIsPlaying(true)}>&#9658;</button>
-                  )}
+                    {isPlaying ? (
+                      <button onClick={() => setIsPlaying(false)}>
+                        &#10074; &#10074;
+                      </button>
+                    ) : (
+                      <button onClick={() => setIsPlaying(true)}>
+                        &#9658;
+                      </button>
+                    )}
 
-                  <button
-                    disabled={activeVideoIndex === activePlaylist.length - 1}
-                    onClick={() => setActiveVideoIndex(activeVideoIndex + 1)}
-                  >
-                    &gt;
-                  </button>
+                    <button
+                      disabled={activeVideoIndex === activePlaylist.length - 1}
+                      onClick={() => setActiveVideoIndex(activeVideoIndex + 1)}
+                    >
+                      &gt;
+                    </button>
+                  </div>
                   <button onClick={handleFullScreen}>&#10064;</button>
                 </>
               </div>

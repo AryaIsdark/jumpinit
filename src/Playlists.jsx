@@ -10,6 +10,7 @@ const playlistItems = [
   { id: "7", category: "hiit", icon: "hiit.png" },
   { id: "8", category: "pilates", icon: "pilates.png" },
 ];
+
 const Playlists = ({ onChange, active }) => {
   const [activeItem, setActiveItem] = useState(active);
 

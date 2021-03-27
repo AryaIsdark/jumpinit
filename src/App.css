@@ -54,17 +54,13 @@ body {
 }
 
 .video-container .controls {
-  position: absolute;
-  top: 0;
   overflow: hidden;
-  height: 100%;
   background: rgba(255, 255, 255, 0);
   width: 100%;
 }
 
 .controls .player-controls {
   position: absolute;
-  top: 0;
   background: black;
   display: flex;
   justify-content: space-between;

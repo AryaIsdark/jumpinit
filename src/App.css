@@ -1,32 +1,36 @@
 body {
   background: black;
+  color: white;
+}
+
+.playlist-container {
+  padding: 10px;
+  margin: 4px;
 }
 
 .playlist {
-  width: 100%;
   display: flex;
+  margin: 0;
+  margin-left: -6px;
   flex-wrap: wrap;
-  justify-content: center;
-  background: black;
-  position: absolute;
-  bottom: 0;
-  height: 225px;
+  /* background: #1d1d1d; */
+  justify-content: space-evenly;
 }
+
 .playlist-button {
-  padding: 2px;
+  padding: 4px;
   background: #101010;
   text-transform: capitalize;
   color: white;
   border: 2px solid #af3a07;
   border-radius: 4px;
-  font-size: 18px;
-  letter-spacing: 5px;
+  font-size: 14px;
+  letter-spacing: 3px;
   font-family: unset;
   margin-bottom: 10px;
   cursor: pointer;
-  width: 130px;
+  min-width: 85px;
   text-align: center;
-  height: 27px;
   margin: 7px;
 }
 
@@ -49,8 +53,6 @@ body {
 }
 
 .video-container {
-  height: 60%;
-  position: fixed;
   width: 100%;
 }
 
@@ -68,7 +70,6 @@ body {
 }
 
 .controls .player-controls {
-  position: absolute;
   background: black;
   display: flex;
   justify-content: space-between;

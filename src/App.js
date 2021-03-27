@@ -43,6 +43,7 @@ const videos = [
 function App() {
   const [activePlaylist, setActivePlaylist] = useState(videos);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const nextVideo = activePlaylist[activeVideoIndex + 1];
 
   const handleOnPlaylistChange = (playlist) => {
     setActiveVideoIndex(0);
@@ -50,8 +51,6 @@ function App() {
       videos.filter((video) => video.category === playlist.category)
     );
   };
-
-  const nextVideo = activeVideoIndex + 1;
 
   const handleOnVideoEnd = () => {
     setActiveVideoIndex(activeVideoIndex + 1);
@@ -64,7 +63,7 @@ function App() {
           <>
             <YouTube
               width="100%"
-              height="400px"
+              height="450px"
               muted={true}
               showInfo={false}
               autoplay={true}
@@ -97,16 +96,16 @@ function App() {
                     &gt;
                   </button>
                 </div>
-                {!!activePlaylist[nextVideo] && (
+                {!!nextVideo && (
                   <div className="up-next">
                     <div>
                       <img
                         width={150}
                         alt={"next-video"}
-                        src={`https://img.youtube.com/vi/${activePlaylist[nextVideo].url}/0.jpg`}
+                        src={`https://img.youtube.com/vi/${nextVideo.url}/0.jpg`}
                       />
                     </div>
-                    {activePlaylist[nextVideo].name}
+                    {nextVideo.name}
                   </div>
                 )}
               </>
@@ -114,11 +113,14 @@ function App() {
           )}
         </div>
       </div>
-      <div className="playlist">
-        <Playlists
-          onChange={handleOnPlaylistChange}
-          active={activePlaylist[0]?.category || ""}
-        />
+      <div className="playlist-container">
+        <h3>Choose a category</h3>
+        <div className="playlist">
+          <Playlists
+            onChange={handleOnPlaylistChange}
+            active={activePlaylist[0]?.category || ""}
+          />
+        </div>
       </div>
     </div>
   );

@@ -53,6 +53,7 @@ body {
 
 .video-container {
   width: 100%;
+  position: relative !important;
 }
 
 .up-next {
@@ -124,4 +125,12 @@ button {
   border: none;
   padding: 10px;
   margin: 4px;
+}
+
+.disable {
+  height: 68%;
+  width: 100%;
+  position: absolute;
+  background: #ff000038;
+  top: 0;
 }

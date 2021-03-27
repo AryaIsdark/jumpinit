@@ -56,6 +56,13 @@ function App() {
     setActiveVideoIndex(activeVideoIndex + 1);
   };
 
+  const handleOnReady = (event) => {
+    console.log(event);
+
+    console.log(event.target.isVideoInfoVisible());
+    event.target.hideVideoInfo();
+  };
+
   return (
     <div className="container">
       <div className="playlist-container">
@@ -74,18 +81,16 @@ function App() {
               width="100%"
               height="450px"
               muted={true}
+              onReady={handleOnReady}
               playsInline={true}
-              showInfo={false}
               autoplay={true}
-              showCaptions={false}
               allowFullscreen={true}
-              annotations={false}
-              modestBranding={false}
               startSeconds={40}
               showRelatedVideos={false}
               onEnd={handleOnVideoEnd}
               video={activePlaylist[activeVideoIndex].url}
             />
+            <div className="disable"></div>
           </>
         )}
         <div className="controls">

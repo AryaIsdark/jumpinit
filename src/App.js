@@ -65,6 +65,7 @@ function App() {
               width="100%"
               height="450px"
               muted={true}
+              playsInline={true}
               showInfo={false}
               autoplay={true}
               showCaptions={false}

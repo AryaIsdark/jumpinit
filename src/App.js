@@ -1,6 +1,7 @@
 import "./App.css";
 import Playlists from "./Playlists";
 import { useState } from "react";
+import YouTube from "@u-wave/react-youtube";
 
 const videos = [
   {
@@ -39,7 +40,6 @@ const videos = [
     category: "pilates",
   },
 ];
-
 function App() {
   const [activePlaylist, setActivePlaylist] = useState(videos);
   const [activeVideoIndex, setActiveVideoIndex] = useState(0);
@@ -51,41 +51,67 @@ function App() {
     );
   };
 
+  const nextVideo = activeVideoIndex + 1;
+
+  const handleOnVideoEnd = () => {
+    setActiveVideoIndex(activeVideoIndex + 1);
+  };
+
   return (
     <div className="container">
       <div className="video-container">
         {!!activePlaylist.length && (
           <>
-            <iframe
+            <YouTube
               width="100%"
-              height="100%"
-              frameBorder="0"
-              src={`https://www.youtube.com/embed/${activePlaylist[activeVideoIndex].url}?enablejsapi=1&autoplay=1&mute=1&iv_load_policy=3&modestbranding=1`}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+              height="600px"
+              muted={true}
+              showInfo={false}
+              autoplay={true}
+              showCaptions={false}
+              allowFullscreen={true}
+              annotations={false}
+              modestBranding={false}
+              startSeconds={40}
+              showRelatedVideos={false}
+              onEnd={handleOnVideoEnd}
+              video={activePlaylist[activeVideoIndex].url}
+            />
           </>
         )}
         <div className="controls">
-          <div className="player-controls">
-            <>
-              <div>
-                <button
-                  disabled={activeVideoIndex === 0}
-                  onClick={() => setActiveVideoIndex(activeVideoIndex - 1)}
-                >
-                  &lt;
-                </button>
-                <button
-                  disabled={activeVideoIndex === activePlaylist.length - 1}
-                  onClick={() => setActiveVideoIndex(activeVideoIndex + 1)}
-                >
-                  &gt;
-                </button>
-              </div>
-            </>
-          </div>
+          {activePlaylist.length > 1 && (
+            <div className="player-controls">
+              <>
+                <div>
+                  <button
+                    disabled={activeVideoIndex === 0}
+                    onClick={() => setActiveVideoIndex(activeVideoIndex - 1)}
+                  >
+                    &lt;
+                  </button>
+                  <button
+                    disabled={activeVideoIndex === activePlaylist.length - 1}
+                    onClick={() => setActiveVideoIndex(activeVideoIndex + 1)}
+                  >
+                    &gt;
+                  </button>
+                </div>
+                {!!activePlaylist[nextVideo] && (
+                  <div className="up-next">
+                    <div>
+                      <img
+                        width={150}
+                        alt={"next-video"}
+                        src={`https://img.youtube.com/vi/${activePlaylist[nextVideo].url}/0.jpg`}
+                      />
+                    </div>
+                    {activePlaylist[nextVideo].name}
+                  </div>
+                )}
+              </>
+            </div>
+          )}
         </div>
       </div>
       <div className="playlist">

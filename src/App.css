@@ -53,6 +53,10 @@ body {
   width: 100%;
 }
 
+.up-next {
+  color: white;
+}
+
 .video-container .controls {
   overflow: hidden;
   background: rgba(255, 255, 255, 0);

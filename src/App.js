@@ -64,7 +64,7 @@ function App() {
           <>
             <YouTube
               width="100%"
-              height="600px"
+              height="400px"
               muted={true}
               showInfo={false}
               autoplay={true}

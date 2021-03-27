@@ -10,9 +10,10 @@ body {
   background: black;
   position: absolute;
   bottom: 0;
+  height: 225px;
 }
 .playlist-button {
-  padding: 10px;
+  padding: 2px;
   background: #101010;
   text-transform: capitalize;
   color: white;
@@ -23,10 +24,10 @@ body {
   font-family: unset;
   margin-bottom: 10px;
   cursor: pointer;
-  width: 120px;
+  width: 130px;
   text-align: center;
-  height: 30px;
-  margin: 10px;
+  height: 27px;
+  margin: 7px;
 }
 
 .active {
@@ -55,6 +56,9 @@ body {
 
 .up-next {
   color: white;
+  background: #1d1d1d;
+  padding: 10px;
+  margin: 4px;
 }
 
 .video-container .controls {

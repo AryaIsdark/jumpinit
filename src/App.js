@@ -58,6 +58,15 @@ function App() {
 
   return (
     <div className="container">
+      <div className="playlist-container">
+        <h3>Choose a category</h3>
+        <div className="playlist">
+          <Playlists
+            onChange={handleOnPlaylistChange}
+            active={activePlaylist[0]?.category || ""}
+          />
+        </div>
+      </div>
       <div className="video-container">
         {!!activePlaylist.length && (
           <>
@@ -112,15 +121,6 @@ function App() {
               </>
             </div>
           )}
-        </div>
-      </div>
-      <div className="playlist-container">
-        <h3>Choose a category</h3>
-        <div className="playlist">
-          <Playlists
-            onChange={handleOnPlaylistChange}
-            active={activePlaylist[0]?.category || ""}
-          />
         </div>
       </div>
     </div>
